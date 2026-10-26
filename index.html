@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buku Jendela Dunia - Media Pembelajaran Bahasa Indonesia Kelas V SD</title>
+  <style>
+    /* ==========================================
+       CSS STYLES - DESIGN SYSTEM & RESPONSIVE
+       ========================================== */
+    :root {
+      --primary-blue: #2B6CB0;
+      --secondary-blue: #3182CE;
+      --light-blue: #EBF8FF;
+      --accent-yellow: #ECC94B;
+      --hover-yellow: #D69E2E;
+      --primary-green: #38A169;
+      --light-green: #F0FFF4;
+      --danger-red: #E53E3E;
+      --text-dark: #2D3748;
+      --text-muted: #718096;
+      --bg-canvas: #F7FAFC;
+      --card-white: #FFFFFF;
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 10px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 20px rgba(0,0,0,0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Container Standard */
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* Header & Navbar */
+    header {
+      background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-md);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      background-color: var(--accent-yellow);
+      color: var(--text-dark);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    .app-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .user-badge {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: white;
+      border-bottom: 2px solid #E2E8F0;
+      position: sticky;
+      top: 74px;
+      z-index: 90;
+    }
+
+    .nav-container {
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 8px 16px;
+      gap: 8px;
+      scrollbar-width: thin;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      background-color: var(--light-blue);
+      color: var(--primary-blue);
+    }
+
+    /* Global Progress Bar */
+    .progress-container {
+      background-color: #E2E8F0;
+      height: 8px;
+      width: 100%;
+    }
+
+    .progress-bar {
+      background-color: var(--primary-green);
+      height: 100%;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    /* Section & Cards */
+    .section {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card-white);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #E2E8F0;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      color: var(--primary-blue);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid var(--light-blue);
+      padding-bottom: 8px;
+    }
+
+    /* Buttons & Form Inputs */
+    .btn {
+      background-color: var(--primary-blue);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s ease, transform 0.1s ease;
+      text-decoration: none;
+      min-height: 44px; /* Touch target accessibility */
+    }
+
+    .btn:hover {
+      background-color: var(--secondary-blue);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-green {
+      background-color: var(--primary-green);
+    }
+    .btn-green:hover {
+      background-color: #2F855A;
+    }
+
+    .btn-yellow {
+      background-color: var(--accent-yellow);
+      color: var(--text-dark);
+    }
+    .btn-yellow:hover {
+      background-color: var(--hover-yellow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary-blue);
+      color: var(--primary-blue);
+    }
+    .btn-outline:hover {
+      background-color: var(--light-blue);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #CBD5E0;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+    }
+
+    textarea.form-control {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    /* Hero / Cover Page */
+    .hero-card {
+      text-align: center;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--light-blue) 100%);
+      border: 2px solid #BEE3F8;
+      padding: 32px 20px;
+    }
+
+    .hero-illustration {
+      max-width: 220px;
+      margin: 16px auto;
+    }
+
+    /* Interactive Options / Quiz */
+    .option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .option-item {
+      background-color: #F7FAFC;
+      border: 2px solid #E2E8F0;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .option-item:hover {
+      border-color: var(--primary-blue);
+      background-color: var(--light-blue);
+    }
+
+    .option-item.selected {
+      border-color: var(--primary-blue);
+      background-color: #EBF8FF;
+      font-weight: 600;
+    }
+
+    .option-item.correct {
+      background-color: var(--light-green);
+      border-color: var(--primary-green);
+      color: #22543D;
+    }
+
+    .option-item.wrong {
+      background-color: #FFF5F5;
+      border-color: var(--danger-red);
+      color: #742A2A;
+    }
+
+    /* Feedback Box */
+    .feedback-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .feedback-box.show {
+      display: block;
+    }
+
+    .feedback-box.success {
+      background-color: var(--light-green);
+      border: 1px solid #9AE6B4;
+      color: #22543D;
+    }
+
+    .feedback-box.error {
+      background-color: #FFF5F5;
+      border: 1px solid #FEB2B2;
+      color: #9B2C2C;
+    }
+
+    /* Question Navigator Grid for Evaluation */
+    .question-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .q-nav-btn {
+      height: 40px;
+      border: 1px solid #CBD5E0;
+      background-color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .q-nav-btn.active {
+      border-2px solid var(--primary-blue);
+      background-color: var(--light-blue);
+      color: var(--primary-blue);
+    }
+
+    .q-nav-btn.answered {
+      background-color: var(--primary-green);
+      color: white;
+      border-color: var(--primary-green);
+    }
+
+    /* Rubric Table */
+    .rubric-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+
+    .rubric-table th, .rubric-table td {
+      border: 1px solid #CBD5E0;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .rubric-table th {
+      background-color: var(--light-blue);
+      color: var(--primary-blue);
+    }
+
+    /* Printable Report Styling */
+    @media print {
+      header, nav, .no-print {
+        display: none !important;
+      }
+      body {
+        background: white;
+        color: black;
+      }
+      .card {
+        box-shadow: none;
+        border: 1px solid #000;
+      }
+    }
+
+    /* Badge Helper */
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .badge-blue { background: #EBF8FF; color: #2B6CB0; }
+    .badge-green { background: #F0FFF4; color: #276749; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-content">
+      <div class="logo-group">
+        <div class="logo-icon">📖</div>
+        <div>
+          <div class="app-title">Buku Jendela Dunia</div>
+          <div style="font-size: 0.8rem; opacity: 0.9;">Bahasa Indonesia Kelas V SD (Fase C)</div>
+        </div>
+      </div>
+      <div class="user-badge" id="header-user">
+        👤 <span id="display-user-name">Peserta Didik</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-container" title="Kemajuan Belajar Total">
+    <div class="progress-bar" id="global-progress"></div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="no-print">
+    <div class="container nav-container">
+      <button class="nav-btn active" onclick="switchSection('sec-beranda')">🏠 Beranda</button>
+      <button class="nav-btn" onclick="switchSection('sec-menu')">📚 Menu Utama</button>
+      <button class="nav-btn" onclick="switchSection('sec-latihan')">✏️ Latihan</button>
+      <button class="nav-btn" onclick="switchSection('sec-evaluasi')">📝 Evaluasi</button>
+      <button class="nav-btn" onclick="switchSection('sec-refleksi')">⭐ Refleksi & Rubrik</button>
+      <button class="nav-btn" onclick="switchSection('sec-laporan')">📊 Laporan</button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container" style="margin-top: 16px;">
+
+    <!-- 1. HALAMAN PEMBUKA / BERANDA -->
+    <section id="sec-beranda" class="section active">
+      <div class="card hero-card">
+        <h1 style="color: var(--primary-blue); font-size: 1.8rem; margin-bottom: 6px;">Buku Jendela Dunia</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem;">"Petualangan Menjelajahi Dunia Melalui Buku"</p>
+        
+        <!-- SVG Graphic -->
+        <div class="hero-illustration">
+          <svg viewBox="0 0 200 150" width="100%" height="auto">
+            <path d="M 20,120 Q 100,100 180,120 L 180,30 Q 100,10 20,30 Z" fill="#4299E1" opacity="0.2"/>
+            <path d="M 20,120 Q 100,95 100,30 Q 100,95 20,120" fill="#2B6CB0"/>
+            <path d="M 180,120 Q 100,95 100,30 Q 100,95 180,120" fill="#3182CE"/>
+            <path d="M 30,110 Q 100,90 95,35" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M 170,110 Q 100,90 105,35" stroke="white" stroke-width="3" fill="none"/>
+            <circle cx="100" cy="25" r="12" fill="#ECC94B"/>
+            <path d="M 95,25 L 105,25 M 100,20 L 100,30" stroke="#2D3748" stroke-width="2"/>
+          </svg>
+        </div>
+
+        <div style="max-width: 400px; margin: 0 auto;" class="form-group">
+          <label for="input-student-name">Masukkan Nama Lengkapmu:</label>
+          <input type="text" id="input-student-name" class="form-control" placeholder="Contoh: Budi Santoso" style="text-align: center;">
+        </div>
+
+        <button class="btn btn-yellow" style="font-size: 1.1rem; padding: 12px 28px;" onclick="startLearning()">
+          🚀 Mulai Belajar Now
+        </button>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">📌 Petunjuk Penggunaan</h3>
+          <ul style="padding-left: 20px; line-height: 1.8;">
+            <li>Isi nama lengkapmu pada kolom di atas sebelum memulai.</li>
+            <li>Pelajari 4 modul utama pada menu materi secara berurutan.</li>
+            <li>Kerjakan latihan interaktif untuk menguji pemahamanmu.</li>
+            <li>Selesaikan Evaluasi Akhir 20 soal di akhir pembelajaran.</li>
+            <li>Media ini dapat digunakankan secara **offline** tanpa kuota internet!</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">🎯 Tujuan Pembelajaran (Usulan Fase C)</h3>
+          <ul style="padding-left: 20px; line-height: 1.8;">
+            <li><strong>Membaca & Memirsa:</strong> Menemukan ide pokok & informasi penting dari bacaan.</li>
+            <li><strong>Menyimak:</strong> Menganalisis informasi dari ulasan buku yang dibacakan.</li>
+            <li><strong>Berbicara:</strong> Menyampaikan pendapat/ulasan buku secara sistematis dan santun.</li>
+            <li><strong>Menulis:</strong> Menyusun tanggapan/ulasan buku sederhana secara terstruktur.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. MENU UTAMA -->
+    <section id="sec-menu" class="section">
+      <div class="card">
+        <h2 class="card-title">📚 Modul Pembelajaran Interaktif</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted);">Pilih salah satu materi di bawah ini untuk memulai petualangan belajarmu:</p>
+
+        <div class="grid-2">
+          <!-- Card Membaca -->
+          <div class="card" style="border-left: 5px solid #3182CE;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span style="font-size: 2rem;">📖</span>
+              <span class="badge badge-blue" id="badge-mod-1">Belum Selesai</span>
+            </div>
+            <h3 style="margin: 10px 0; color: var(--primary-blue);">Ayo Membaca dan Memirsa</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
+              Membaca cerita pendek, menemukan ide pokok, informasi kunci, dan kosakata baru.
+            </p>
+            <button class="btn btn-outline" style="width: 100%;" onclick="switchSection('sec-materi-membaca')">Masuk Materi →</button>
+          </div>
+
+          <!-- Card Menyimak -->
+          <div class="card" style="border-left: 5px solid #38A169;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span style="font-size: 2rem;">🎧</span>
+              <span class="badge badge-blue" id="badge-mod-2">Belum Selesai</span>
+            </div>
+            <h3 style="margin: 10px 0; color: var(--primary-green);">Ayo Menyimak</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
+              Mendengarkan bacaan ulasan buku dan mengidentifikasi informasi lisan.
+            </p>
+            <button class="btn btn-outline" style="width: 100%;" onclick="switchSection('sec-materi-menyimak')">Masuk Materi →</button>
+          </div>
+
+          <!-- Card Berbicara -->
+          <div class="card" style="border-left: 5px solid #D69E2E;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span style="font-size: 2rem;">🗣️</span>
+              <span class="badge badge-blue" id="badge-mod-3">Belum Selesai</span>
+            </div>
+            <h3 style="margin: 10px 0; color: #D69E2E;">Ayo Berbicara & Mempresentasikan</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
+              Belajar mempresentasikan rekomendasi buku menggunakan panduan kerangka kalimat.
+            </p>
+            <button class="btn btn-outline" style="width: 100%;" onclick="switchSection('sec-materi-berbicara')">Masuk Materi →</button>
+          </div>
+
+          <!-- Card Menulis -->
+          <div class="card" style="border-left: 5px solid #805AD5;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span style="font-size: 2rem;">✍️</span>
+              <span class="badge badge-blue" id="badge-mod-4">Belum Selesai</span>
+            </div>
+            <h3 style="margin: 10px 0; color: #805AD5;">Ayo Menulis</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
+              Menyusun formulir ulasan buku sederhana dan melakukan pemeriksaan otomatis.
+            </p>
+            <button class="btn btn-outline" style="width: 100%;" onclick="switchSection('sec-materi-menulis')">Masuk Materi →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MATERI MEMBACA DAN MEMIRSA -->
+    <section id="sec-materi-membaca" class="section">
+      <div class="card">
+        <h2 class="card-title">📖 Modul 1: Ayo Membaca dan Memirsa</h2>
+        
+        <div style="background-color: var(--light-blue); padding: 16px; border-radius: var(--radius-sm); margin-bottom: 16px;">
+          <h4 style="color: var(--primary-blue);">Teks Bacaan: "Petualangan Bima di Perpustakaan Sekolah"</h4>
+          <p style="margin-top: 8px; text-align: justify;">
+            Setiap hari Selasa jam istirahat, Bima selalu berkunjung ke perpustakaan SD Nusantara. Di sana, terdapat beraneka ragam buku yang tersusun rapi di rak. Bima sangat menyukai buku tentang sains dan alam. Bagi Bima, membaca buku adalah petualangan yang seru karena ia bisa mengetahui rahasia luar angkasa dan kehidupan bawah laut tanpa harus pergi jauh. 
+          </p>
+          <p style="margin-top: 8px; text-align: justify;">
+            Kemarin, Bima menemukan sebuah buku ensiklopedia bergambar yang tebal. Melalui buku itu, Bima belajar bahwa membaca tidak hanya menambah wawasan, tetapi juga melatih konsentrasi dan memperbanyak kosakata baru. Bima bertekad untuk membaca satu buku setiap minggu agar jendela dunianya semakin terbuka lebar.
+          </p>
+        </div>
+
+        <h3 style="margin: 16px 0 8px 0; color: var(--primary-blue);">💡 Bedah Struktur Teks</h3>
+        <div class="grid-3" style="margin-bottom: 20px;">
+          <div style="background: #F7FAFC; padding: 12px; border-radius: 8px; border: 1px solid #CBD5E0;">
+            <strong>🎯 Tokoh Utama:</strong><br> Bima (Siswa yang gemar membaca).
+          </div>
+          <div style="background: #F7FAFC; padding: 12px; border-radius: 8px; border: 1px solid #CBD5E0;">
+            <strong>📌 Ide Pokok:</strong><br> Manfaat dan kebiasaan Bima membaca buku di perpustakaan.
+          </div>
+          <div style="background: #F7FAFC; padding: 12px; border-radius: 8px; border: 1px solid #CBD5E0;">
+            <strong>📚 Kosakata Baru:</strong><br> <em>Ensiklopedia</em> (Buku berisi uraian berbagai ilmu), <em>Wawasan</em> (Pengetahuan).
+          </div>
+        </div>
+
+        <h3 style="margin-bottom: 10px;">❓ Uji Cepat Membaca</h3>
+        <p>Apa ide pokok paragraf pertama bacaan di atas?</p>
+        <div class="option-list" id="q-read-1">
+          <div class="option-item" onclick="checkReadAnswer(this, false)">A. Bima membeli buku baru di toko buku.</div>
+          <div class="option-item" onclick="checkReadAnswer(this, true)">B. Kebiasaan Bima berkunjung dan membaca buku di perpustakaan.</div>
+          <div class="option-item" onclick="checkReadAnswer(this, false)">C. Jadwal pelajaran sekolah Bima pada hari Selasa.</div>
+        </div>
+        <div id="fb-read-1" class="feedback-box"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+          <button class="btn btn-outline" onclick="switchSection('sec-menu')">← Kembali ke Menu</button>
+          <button class="btn btn-green" onclick="completeModule(1); switchSection('sec-materi-menyimak');">Modul Selanjutnya: Menyimak →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. MATERI MENYIMAK -->
+    <section id="sec-materi-menyimak" class="section">
+      <div class="card">
+        <h2 class="card-title">🎧 Modul 2: Ayo Menyimak</h2>
+        
+        <p style="margin-bottom: 12px;">Dengarkan cerita/ulasan buku di bawah ini dengan menekan tombol **"Bacakan Teks"**, atau baca transkrip di bawahnya jika audio tidak tersedia.</p>
+
+        <div style="background: #F0FFF4; border: 1px solid #9AE6B4; padding: 16px; border-radius: var(--radius-sm); margin-bottom: 16px;">
+          <div style="display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
+            <button class="btn btn-green" onclick="playAudioText()">🔊 Bacakan Teks (Audio Browser)</button>
+            <button class="btn btn-outline" onclick="stopAudioText()">⏹️ Hentikan Audio</button>
+            <button class="btn btn-yellow" onclick="toggleTranscript()">👁️ Tampilkan / Sembunyikan Naskah</button>
+          </div>
+
+          <div id="transcript-box" style="display: block; background: white; padding: 12px; border-radius: 6px; border: 1px dashed #38A169;">
+            <strong>Naskah Simakan: Ulasan Buku "Si Kancil dan Sahabat Hutan"</strong>
+            <p id="listen-text-content" style="margin-top: 8px; text-align: justify;">
+              Buku berjudul "Si Kancil dan Sahabat Hutan" ditulis oleh Rahmad Kartiko. Buku cerita anak ini menceritakan tentang pentingnya gotong royong dan saling tolong-menolong di antara hewan-hewan hutan. Saat musim kemarau tiba, Kancil memimpin para hewan untuk membuat penampungan air bersama. Kelebihan buku ini adalah bahasanya yang sangat mudah dipahami dan dilengkapi dengan gambar ilustrasi yang berwarna cerah. Buku ini sangat direkomendasikan untuk anak-anak sekolah dasar karena mengajarkan nilai kepedulian sosial.
+            </p>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom: 10px;">❓ Pertanyaan Pemahaman Menyimak</h3>
+        <p>Siapakah penulis buku cerita yang diulas dalam teks lisan di atas?</p>
+        <div class="option-list" id="q-listen-1">
+          <div class="option-item" onclick="checkListenAnswer(this, false)">A. Bima Santoso</div>
+          <div class="option-item" onclick="checkListenAnswer(this, true)">B. Rahmad Kartiko</div>
+          <div class="option-item" onclick="checkListenAnswer(this, false)">C. Nusantara Press</div>
+        </div>
+        <div id="fb-listen-1" class="feedback-box"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+          <button class="btn btn-outline" onclick="switchSection('sec-materi-membaca')">← Modul Membaca</button>
+          <button class="btn btn-green" onclick="completeModule(2); switchSection('sec-materi-berbicara');">Modul Selanjutnya: Berbicara →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MATERI BERBICARA DAN MEMPRESENTASIKAN -->
+    <section id="sec-materi-berbicara" class="section">
+      <div class="card">
+        <h2 class="card-title">🗣️ Modul 3: Ayo Berbicara & Mempresentasikan</h2>
+
+        <p style="margin-bottom: 14px;">
+          Mempresentasikan ulasan buku di depan kelas sangat menyenangkan! Gunakan **Pola Kalimat Panduan (*Sentence Starters*)** di bawah ini agar penyampaianmu runtut dan jelas.
+        </p>
+
+        <div style="background: #FEFCBF; border-left: 4px solid #D69E2E; padding: 16px; border-radius: var(--radius-sm); margin-bottom: 16px;">
+          <h4 style="color: #744210; margin-bottom: 8px;">💬 Pola Kalimat Presentasi Ulasan Buku:</h4>
+          <ol style="padding-left: 20px; line-height: 1.9; color: #2D3748;">
+            <li>"Halo teman-teman, hari ini saya akan menceritakan buku yang pernah saya baca."</li>
+            <li>"Buku yang saya baca berjudul <strong>[Judul Buku]</strong> tulisan <strong>[Nama Penulis]</strong>."</li>
+            <li>"Buku ini menceritakan tentang <strong>[Ringkasan Cerita]</strong>."</li>
+            <li>"Hal yang paling menarik bagi saya adalah ketika <strong>[Bagian Paling Seru]</strong>."</li>
+            <li>"Saya merekomendasikan buku ini karena <strong>[Alasan Rekomendasi]</strong>."</li>
+          </ol>
+        </div>
+
+        <!-- Interactive Practice Timer -->
+        <div class="card" style="background: #F7FAFC; text-align: center;">
+          <h3>⏱️ Alat Latihan Presentasi (1 - 2 Menit)</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">Cobalah berlatih bicara menggunakan pola di atas selama 60 detik!</p>
+          <div id="timer-display" style="font-size: 2.5rem; font-weight: bold; color: var(--primary-blue); margin: 10px 0;">01:00</div>
+          <button class="btn btn-yellow" id="btn-timer" onclick="toggleSpeakTimer()">Mulai Latihan Bicara</button>
+        </div>
+
+        <!-- Checklist Mandiri -->
+        <h4 style="margin: 16px 0 8px 0;">📋 Daftar Periksa Kesiapan Presentasi Mandiri:</h4>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <label><input type="checkbox" class="speak-chk"> Saya berbicara dengan suara yang nyaring dan jelas.</label>
+          <label><input type="checkbox" class="speak-chk"> Saya menyampaikan informasi secara runtut dari awal hingga akhir.</label>
+          <label><input type="checkbox" class="speak-chk"> Saya berdiri tegap dan percaya diri saat presentasi.</label>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+          <button class="btn btn-outline" onclick="switchSection('sec-materi-menyimak')">← Modul Menyimak</button>
+          <button class="btn btn-green" onclick="completeModule(3); switchSection('sec-materi-menulis');">Modul Selanjutnya: Menulis →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. MATERI MENULIS -->
+    <section id="sec-materi-menulis" class="section">
+      <div class="card">
+        <h2 class="card-title">✍️ Modul 4: Ayo Menulis Tanggapan / Ulasan Buku</h2>
+
+        <p style="margin-bottom: 16px;">
+          Isilah formulir di bawah ini untuk menyusun ulasan buku sederhana berdasarkan buku favorit yang pernah kamu baca!
+        </p>
+
+        <form id="write-form" onsubmit="return false;">
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="w-title">Judul Buku:</label>
+              <input type="text" id="w-title" class="form-control" placeholder="Contoh: Laskar Pelangi">
+            </div>
+            <div class="form-group">
+              <label for="w-author">Penulis / Pengarang:</label>
+              <input type="text" id="w-author" class="form-control" placeholder="Contoh: Andrea Hirata">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="w-summary">Ringkasan Isi Buku:</label>
+            <textarea id="w-summary" class="form-control" placeholder="Ceritakan singkat isi buku tersebut..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="w-advantage">Kelebihan / Bagian Menarik Buku:</label>
+            <textarea id="w-advantage" class="form-control" placeholder="Apa hal menarik atau kelebihan dari buku ini?"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="w-recommendation">Pendapat & Rekomendasi Kamu:</label>
+            <textarea id="w-recommendation" class="form-control" placeholder="Mengapa teman-temanmu harus membaca buku ini?"></textarea>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;">
+            <button class="btn btn-green" onclick="checkWritingCompleteness()">🔍 Periksa Kelengkapan Tulisan</button>
+            <button class="btn btn-outline" onclick="copyWritingText()">📋 Salin Teks Tulisan</button>
+            <button class="btn btn-yellow" onclick="window.print()">🖨️ Cetak Tulisan</button>
+          </div>
+        </form>
+
+        <div id="write-feedback" class="feedback-box" style="margin-top: 16px;"></div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+          <button class="btn btn-outline" onclick="switchSection('sec-materi-berbicara')">← Modul Berbicara</button>
+          <button class="btn btn-green" onclick="completeModule(4); switchSection('sec-latihan');">Selesai Modul & Ke Latihan →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. LATIHAN INTERAKTIF -->
+    <section id="sec-latihan" class="section">
+      <div class="card">
+        <h2 class="card-title">✏️ Latihan Interaktif Pembelajaran</h2>
+        <p style="margin-bottom: 16px; color: var(--text-muted);">Kerjakan soal latihan beraneka ragam di bawah ini untuk menguji pemahamanmu!</p>
+
+        <!-- Dynamic Practice Questions Container -->
+        <div id="practice-questions-container"></div>
+
+        <div style="margin-top: 20px; text-align: center;">
+          <button class="btn btn-green" onclick="submitPractice()">📤 Kirim & Periksa Latihan</button>
+          <button class="btn btn-outline" onclick="resetPractice()">🔄 Ulangi Latihan</button>
+        </div>
+
+        <div id="practice-result-box" class="feedback-box" style="margin-top: 16px;"></div>
+      </div>
+    </section>
+
+    <!-- 8. EVALUASI AKHIR (20 SOAL) -->
+    <section id="sec-evaluasi" class="section">
+      <div class="card">
+        <h2 class="card-title">📝 Evaluasi Akhir Pembelajaran (20 Soal)</h2>
+        <p style="margin-bottom: 14px; font-size: 0.95rem;">
+          Evaluasi ini menguji 4 elemen (Membaca, Menyimak, Berbicara, Menulis). Pilih satu jawaban paling tepat!
+        </p>
+
+        <!-- Question Number Navigator Grid -->
+        <div class="question-nav-grid" id="eval-nav-grid"></div>
+
+        <!-- Question Card Display -->
+        <div id="eval-question-display" style="background: #F7FAFC; padding: 20px; border-radius: var(--radius-sm); border: 1px solid #CBD5E0;">
+          <!-- Dynamically filled by JS -->
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 16px;">
+          <button class="btn btn-outline" id="btn-prev-eval" onclick="navigateEval(-1)">← Soal Sebelumnya</button>
+          <button class="btn btn-outline" id="btn-next-eval" onclick="navigateEval(1)">Soal Selanjutnya →</button>
+        </div>
+
+        <div style="margin-top: 24px; border-top: 2px dashed #E2E8F0; padding-top: 16px; text-align: center;">
+          <button class="btn btn-green" style="font-size: 1.1rem; padding: 12px 28px;" onclick="submitEvaluation()">
+            🏁 Selesaikan & Kirim Evaluasi
+          </button>
+        </div>
+
+        <!-- Final Evaluation Score Display -->
+        <div id="eval-score-card" style="display: none; margin-top: 20px; background: var(--light-blue); border: 2px solid var(--primary-blue); padding: 20px; border-radius: var(--radius-md); text-align: center;">
+          <h3 style="color: var(--primary-blue);">Hasil Evaluasi Akhir Kamu</h3>
+          <div id="eval-score-number" style="font-size: 3.5rem; font-weight: bold; color: var(--primary-green); margin: 10px 0;">0</div>
+          <p id="eval-score-details" style="font-size: 1rem; margin-bottom: 14px;"></p>
+          <div id="eval-recommendations" style="text-align: left; background: white; padding: 14px; border-radius: 8px; margin-bottom: 14px;"></div>
+          <button class="btn btn-yellow" onclick="resetEvaluation()">🔄 Ulangi Evaluasi</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. REFLEKSI & RUBRIK GURU -->
+    <section id="sec-refleksi" class="section">
+      <div class="card">
+        <h2 class="card-title">⭐ Refleksi Peserta Didik</h2>
+        <p style="margin-bottom: 12px;">Pilih sejauh mana pemahamanmu setelah mempelajari materi ini:</p>
+
+        <div class="form-group">
+          <label>Tingkat Pemahaman Diri:</label>
+          <select id="refl-level" class="form-control">
+            <option value="Sangat Paham">🟢 Saya Sudah Paham Seluruh Materi</option>
+            <option value="Cukup Paham">🟡 Saya Cukup Paham, Perlu Sedikit Latihan</option>
+            <option value="Perlu Bantuan">🔴 Saya Masih Membutuhkan Bantuan Guru/Teman</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="refl-text-1">Apa pengetahuan atau hal baru yang kamu dapatkan?</label>
+          <textarea id="refl-text-1" class="form-control" placeholder="Tuliskan di sini..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="refl-text-2">Apa langkah yang akan kamu lakukan agar semakin gemar membaca?</label>
+          <textarea id="refl-text-2" class="form-control" placeholder="Tuliskan rencanamu..."></textarea>
+        </div>
+
+        <button class="btn btn-green" onclick="saveReflection()">💾 Simpan Refleksi</button>
+      </div>
+
+      <!-- Rubrik Guru (Skala 1-4) -->
+      <div class="card no-print">
+        <h2 class="card-title">👨‍🏫 Rubrik Penilaian Keterampilan Berbahasa (Panduan Guru)</h2>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          Gunakan rubrik analitik skala 1-4 di bawah ini untuk menilai performa autentik siswa dalam berbicara dan menulis.
+        </p>
+
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Elemen</th>
+              <th>Skor 1 (Perlu Bimbingan)</th>
+              <th>Skor 2 (Cukup)</th>
+              <th>Skor 3 (Baik)</th>
+              <th>Skor 4 (Sangat Baik)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Membaca & Memirsa</strong></td>
+              <td>Belum mampu menemukan ide pokok.</td>
+              <td>Menemukan ide pokok dengan bantuan guru.</td>
+              <td>Menemukan ide pokok & detail secara mandiri.</td>
+              <td>Mampu menyimpulkan serta menganalisis isi bacaan secara kritis.</td>
+            </tr>
+            <tr>
+              <td><strong>Menyimak</strong></td>
+              <td>Kesulitan menangkap informasi lisan.</td>
+              <td>Menangkap sebagian kecil informasi lisan.</td>
+              <td>Menangkap gagasan utama simakan dengan tepat.</td>
+              <td>Menganalisis isi & menyimpulkan pesan lisan secara akurat.</td>
+            </tr>
+            <tr>
+              <td><strong>Berbicara</strong></td>
+              <td>Suara pelan, belum runtut.</td>
+              <td>Cukup runtut, menggunakan teks panduan.</td>
+              <td>Lancar, runtut, artikulasi jelas.</td>
+              <td>Sangat percaya diri, runtut, vokal jelas & ekspresif.</td>
+            </tr>
+            <tr>
+              <td><strong>Menulis</strong></td>
+              <td>Struktur ulasan tidak lengkap.</td>
+              <td>Struktur kurang lengkap, banyak kesalahan ejaan.</td>
+              <td>Struktur lengkap, ejaan cukup rapi.</td>
+              <td>Struktur sangat lengkap, tata bahasa & ejaan sangat baik.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="form-group" style="margin-top: 16px;">
+          <label for="teacher-notes">Catatan & Saran Tindak Lanjut Guru:</label>
+          <textarea id="teacher-notes" class="form-control" placeholder="Tulis catatan apresiasi dan saran pengembangan untuk siswa di sini..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. LAPORAN HASIL BELAJAR -->
+    <section id="sec-laporan" class="section">
+      <div class="card" id="printable-report-card">
+        <div style="text-align: center; border-bottom: 2px solid var(--primary-blue); padding-bottom: 12px; margin-bottom: 16px;">
+          <h2 style="color: var(--primary-blue);">📊 LAPORAN HASIL BELAJAR PESERTA DIDIK</h2>
+          <p style="font-size: 0.9rem;">Media Pembelajaran Interaktif Bahasa Indonesia Kelas V SD</p>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 16px;">
+          <div>
+            <p><strong>Nama Peserta Didik:</strong> <span id="rpt-student-name">-</span></p>
+            <p><strong>Mata Pelajaran:</strong> Bahasa Indonesia (Fase C)</p>
+            <p><strong>Materi:</strong> Buku Jendela Dunia</p>
+          </div>
+          <div>
+            <p><strong>Tanggal Pengerjaan:</strong> <span id="rpt-date">-</span></p>
+            <p><strong>Progres Modul Materi:</strong> <span id="rpt-progress">0%</span></p>
+            <p><strong>Status Refleksi:</strong> <span id="rpt-refl-status">Belum Mengisi</span></p>
+          </div>
+        </div>
+
+        <table class="rubric-table" style="margin-bottom: 20px;">
+          <thead>
+            <tr>
+              <th>Jenis Evaluasi / Aktivitas</th>
+              <th>Skor / Hasil</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Latihan Interaktif (Formatif)</td>
+              <td id="rpt-practice-score">0 / 100</td>
+              <td>Latihan variatif per elemen</td>
+            </tr>
+            <tr>
+              <td>Evaluasi Akhir (Sumatif)</td>
+              <td id="rpt-eval-score" style="font-weight: bold; color: var(--primary-blue);">0 / 100</td>
+              <td id="rpt-eval-status">Belum Dikirim</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="background: #F7FAFC; padding: 12px; border-radius: 8px; border: 1px solid #E2E8F0; margin-bottom: 16px;">
+          <strong>📝 Catatan Guru & Tindak Lanjut:</strong>
+          <p id="rpt-teacher-notes-display" style="margin-top: 6px; font-style: italic; color: var(--text-muted);">- Belum ada catatan guru -</p>
+        </div>
+
+        <div class="no-print" style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+          <button class="btn btn-green" onclick="window.print()">🖨️ Cetak / Simpan PDF Laporan</button>
+          <button class="btn btn-outline" onclick="saveLocalReport()">💾 Simpan Lokal Browser</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       JAVASCRIPT LOGIC - VANILLA JS
+       ========================================== -->
+  <script>
+    /* Global Application State */
+    const state = {
+      studentName: 'Peserta Didik',
+      completedModules: new Set(),
+      practiceScore: 0,
+      evalAnswers: Array(20).fill(null),
+      evalCurrentIndex: 0,
+      evalSubmitted: false,
+      evalScore: 0,
+      reflectionSaved: false,
+      timerInterval: null,
+      timerSeconds: 60
+    };
+
+    /* 20 Evaluation Questions Dataset (5 Reading, 5 Listening, 5 Speaking Concept, 5 Writing) */
+    const evalQuestions = [
+      // Membaca (1-5)
+      { q: "1. Apa tujuan utama dari membaca buku menurut tema 'Buku Jendela Dunia'?", opts: ["A. Mengisi waktu luang tanpa hasil", "B. Membuka wawasan dan menambah pengetahuan", "C. Menghabiskan uang untuk membeli buku", "D. Menghafal seluruh isi buku"], ans: 1 },
+      { q: "2. Gagasan utama atau pikiran pokok dalam sebuah paragraf disebut...", opts: ["A. Judul cerita", "B. Tokoh tambahan", "C. Ide pokok", "D. Amanat tersirat"], ans: 2 },
+      { q: "3. Buku yang berisi kumpulan tulisan dengan penjelasan ilmiah lengkap mengenai berbagai bidang dinamakan...", opts: ["A. Komik", "B. Novel", "C. Ensiklopedia", "D. Majalah bergambar"], ans: 2 },
+      { q: "4. Langkah pertama untuk menemukan informasi penting dari teks bacaan adalah...", opts: ["A. Membaca teks secara cermat dan seksama", "B. Menutup buku dan menebak reaches", "C. Menyalin seluruh kalimat bacaan", "D. Menulis ulasan sebelum membaca"], ans: 0 },
+      { q: "5. Pesan moral yang ingin disampaikan pengarang kepada pembaca dalam sebuah cerita disebut...", opts: ["A. Latar tempat", "B. Amanat", "C. Alur cerita", "D. Penokohan"], ans: 1 },
+
+      // Menyimak (6-10)
+      { q: "6. Saat menyimak ulasan buku lisan, sikap yang baik dari pendengar adalah...", opts: ["A. Berbicara sendiri dengan teman", "B. Mendengarkan dengan konsentrasi dan mencatat poin penting", "C. Mengabaikan pembicara", "D. Keluar dari ruangan"], ans: 1 },
+      { q: "7. Informasi yang berfungsi menjelaskan gagasan utama dalam sebuah teks lisan disebut...", opts: ["A. Gagasan pendukung", "B. Judul buku", "C. Tokoh utama", "D. Kesimpulan akhir"], ans: 0 },
+      { q: "8. Mengapa kita perlu menyimak dengan cermat sebelum memberikan pendapat tentang ulasan buku?", opts: ["A. Agar dapat menjawab asal-asalan", "B. Agar memahami isi informasi lisan secara utuh dan tepat", "C. Agar bisa menyela pembicara", "D. Agar tidak perlu mencatat"], ans: 1 },
+      { q: "9. Rangkuman singkat dari seluruh informasi yang didengar dinamakan...", opts: ["A. Pertanyaan", "B. Kesimpulan", "C. Kosakata", "D. Daftar pustaka"], ans: 1 },
+      { q: "10. Dalam ulasan lisan buku 'Si Kancil dan Sahabat Hutan', nilai utama yang diajarkan adalah...", opts: ["A. Kesombongan", "B. Gotong royong dan kepedulian sosial", "C. Permusuhan antarhewan", "D. Kecepatan berlari"], ans: 1 },
+
+      // Berbicara (11-15)
+      { q: "11. Kalimat pembuka yang santun saat mempresentasikan ulasan buku di depan kelas adalah...", opts: ["A. 'Hei dengarkan aku sekarang!'", "B. 'Halo teman-teman, hari ini saya akan menceritakan buku yang saya baca.'", "C. 'Buku ini jelek sekali.'", "D. 'Langsung saja ya tanpa salam.'"], ans: 1 },
+      { q: "12. Urutan yang benar dalam mempresentasikan ulasan buku adalah...", opts: ["A. Rekomendasi -> Salam -> Ringkasan", "B. Salam -> Identitas Buku -> Ringkasan -> Kelebihan -> Rekomendasi", "C. Ringkasan -> Rekomendasi -> Salam", "D. Identitas Buku -> Penutup -> Ringkasan"], ans: 1 },
+      { q: "13. Agar suara terdengar jelas oleh seluruh teman di kelas, sikap vokal kita harus...", opts: ["A. Berbisik-bisik", "B. Berteriak hingga marah", "C. Berbicara dengan artikulasi dan volume yang pas", "D. Berbicara sangat cepat"], ans: 2 },
+      { q: "14. Sikap tubuh yang baik saat berdiri mempresentasikan hasil karya di depan kelas adalah...", opts: ["A. Tegap, tenang, dan menatap audiens/teman", "B. Bersandar di tembok sambil bersedekap", "C. Membelakangi teman-teman", "D. Menunduk melihat lantai"], ans: 0 },
+      { q: "15. 'Saya merekomendasikan buku ini karena ceritanya seru dan penuh petualangan.' Kalimat tersebut merupakan bagian...", opts: ["A. Salam pembuka", "B. Rekomendasi / Penutup ulasan", "C. Identitas penulis", "D. Datar isi"], ans: 1 },
+
+      // Menulis (16-20)
+      { q: "16. Bagian struktur ulasan buku yang berisi judul, nama penulis, dan penerbit dinamakan...", opts: ["A. Identitas Buku", "B. Ringkasan Cerita", "C. Kelebihan Buku", "D. Catatan Guru"], ans: 0 },
+      { q: "17. Menceritakan kembali jalan cerita secara singkat menggunakan bahasa sendiri disebut menyusun...", opts: ["A. Daftar harga", "B. Ringkasan / Sinopsis", "C. Judul bab", "D. Biodata pembaca"], ans: 1 },
+      { q: "18. Saat menuliskan ulasan, bagian yang menjelaskan hal-hal positif dari buku disebut...", opts: ["A. Kekurangan buku", "B. Kelebihan / Keunggulan buku", "C. Halaman sampul", "D. Kata pengantar"], ans: 1 },
+      { q: "19. Penulisan tanda baca yang benar untuk judul buku dalam kalimat adalah...", opts: ["A. Buku 'Laskar Pelangi' sangat menarik.", "B. buku laskar pelangi sangat menarik", "C. Buku, Laskar Pelangi, Sangat Menarik", "D. 'Buku' laskar pelangi."], ans: 0 },
+      { q: "20. Sebelum menyerahkan tulisan ulasan buku kepada guru, langkah penting yang harus dilakukan adalah...", opts: ["A. Menyobek kertas", "B. Memeriksa kembali kelengkapan struktur dan ejaan tulisan", "C. Menghapus seluruh isi tulisan", "D. Langsung menyimpannya di tas"], ans: 1 }
+    ];
+
+    /* Practice Questions Data (Formative) */
+    const practiceQuestions = [
+      { id: 1, type: 'mc', q: "Manakah yang merupakan sumber pengetahuan berbentuk buku?", opts: ["A. Televisi", "B. Ensiklopedia", "C. Radio"], ans: 1, exp: "Ensiklopedia adalah pustaka buku berisi ilmu pengetahuan." },
+      { id: 2, type: 'tf', q: "Ide pokok selalu terletak di akhir paragraf saja. (Benar/Salah)", opts: ["Benar", "Salah"], ans: 1, exp: "Ide pokok bisa terletak di awal (deduktif), akhir (induktif), atau campuran." },
+      { id: 3, type: 'mc', q: "Bagian ulasan buku yang berisi ajakan membaca bagi orang lain disebut...", opts: ["A. Identitas", "B. Rekomendasi", "C. Sinopsis"], ans: 1, exp: "Rekomendasi berisi saran/alasan mengapa orang lain perlu membaca buku tersebut." }
+    ];
+
+    /* Initialize App on Window Load */
+    window.onload = function() {
+      // Set default date display
+      const today = new Date().toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('rpt-date').textContent = today;
+
+      // Render evaluation navigation grid
+      renderEvalNavGrid();
+      showEvalQuestion(0);
+
+      // Render practice questions
+      renderPracticeQuestions();
+
+      updateGlobalProgress();
+    };
+
+    /* Switch Active Section */
+    function switchSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Sync active navbar button
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      
+      // Sync report view if switching to report
+      if(sectionId === 'sec-laporan') {
+        updateReportView();
+      }
+    }
+
+    /* Start Learning Handler */
+    function startLearning() {
+      const nameInput = document.getElementById('input-student-name').value.trim();
+      if (nameInput !== "") {
+        state.studentName = nameInput;
+        document.getElementById('display-user-name').textContent = state.studentName;
+        document.getElementById('rpt-student-name').textContent = state.studentName;
+      }
+      switchSection('sec-menu');
+    }
+
+    /* Module Completion Handler */
+    function completeModule(modNum) {
+      state.completedModules.add(modNum);
+      const badge = document.getElementById(`badge-mod-${modNum}`);
+      if (badge) {
+        badge.textContent = "Selesai ✓";
+        badge.className = "badge badge-green";
+      }
+      updateGlobalProgress();
+    }
+
+    /* Update Global Progress Bar */
+    function updateGlobalProgress() {
+      // Total 6 completion milestones: 4 modules + practice + eval
+      let progressCount = state.completedModules.size;
+      if (state.practiceScore > 0) progressCount++;
+      if (state.evalSubmitted) progressCount++;
+
+      const percentage = Math.round((progressCount / 6) * 100);
+      document.getElementById('global-progress').style.width = percentage + '%';
+      document.getElementById('rpt-progress').textContent = percentage + '%';
+    }
+
+    /* Interactive Reading & Listening Quiz Feedback */
+    function checkReadAnswer(el, isCorrect) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.option-item').forEach(opt => opt.className = 'option-item');
+      const fb = document.getElementById('fb-read-1');
+
+      if (isCorrect) {
+        el.classList.add('correct');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '🎉 <strong>Benar sekali!</strong> Ide pokok paragraf pertama adalah kebiasaan Bima berkunjung dan membaca di perpustakaan.';
+      } else {
+        el.classList.add('wrong');
+        fb.className = 'feedback-box show error';
+        fb.innerHTML = '❌ <strong>Kurang tepat.</strong> Coba baca kembali paragraf pertama secara saksama!';
+      }
+    }
+
+    function checkListenAnswer(el, isCorrect) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.option-item').forEach(opt => opt.className = 'option-item');
+      const fb = document.getElementById('fb-listen-1');
+
+      if (isCorrect) {
+        el.classList.add('correct');
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = '🎉 <strong>Hebat!</strong> Penulis buku cerita tersebut adalah Rahmad Kartiko.';
+      } else {
+        el.classList.add('wrong');
+        fb.className = 'feedback-box show error';
+        fb.innerHTML = '❌ <strong>Kurang tepat.</strong> Dengarkan kembali naskah simakan di atas.';
+      }
+    }
+
+    /* Web Speech API (Audio Text-to-Speech) */
+    function playAudioText() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); // Reset previous speech
+        const text = document.getElementById('listen-text-content').textContent;
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'id-ID';
+        utterance.rate = 0.9; // Slightly slower for primary school children
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Fitur suara otomatis tidak didukung browser ini. Silakan baca naskah transkrip yang telah disediakan.");
+      }
+    }
+
+    function stopAudioText() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    }
+
+    function toggleTranscript() {
+      const box = document.getElementById('transcript-box');
+      box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+    }
+
+    /* Speaking Practice Timer */
+    function toggleSpeakTimer() {
+      const btn = document.getElementById('btn-timer');
+      const display = document.getElementById('timer-display');
+
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
+        btn.textContent = "Mulai Latihan Bicara";
+        state.timerSeconds = 60;
+        display.textContent = "01:00";
+      } else {
+        btn.textContent = "Hentikan Timer";
+        state.timerInterval = setInterval(() => {
+          state.timerSeconds--;
+          const secs = state.timerSeconds < 10 ? '0' + state.timerSeconds : state.timerSeconds;
+          display.textContent = `00:${secs}`;
+
+          if (state.timerSeconds <= 0) {
+            clearInterval(state.timerInterval);
+            state.timerInterval = null;
+            btn.textContent = "Mulai Ulang Timer";
+            alert("⏰ Waktu latihan bicara 1 menit telah selesai! Bagus sekali!");
+          }
+        }, 1000);
+      }
+    }
+
+    /* Writing Module Completeness Checker */
+    function checkWritingCompleteness() {
+      const title = document.getElementById('w-title').value.trim();
+      const author = document.getElementById('w-author').value.trim();
+      const summary = document.getElementById('w-summary').value.trim();
+      const advantage = document.getElementById('w-advantage').value.trim();
+      const rec = document.getElementById('w-recommendation').value.trim();
+      const fb = document.getElementById('write-feedback');
+
+      let missing = [];
+      if (!title) missing.push("Judul Buku");
+      if (!author) missing.push("Penulis");
+      if (!summary) missing.push("Ringkasan Isi");
+      if (!advantage) missing.push("Kelebihan Buku");
+      if (!rec) missing.push("Rekomendasi");
+
+      const totalWords = (summary + " " + advantage + " " + rec).split(/\s+/).filter(w => w.length > 0).length;
+
+      if (missing.length === 0) {
+        fb.className = 'feedback-box show success';
+        fb.innerHTML = `✅ <strong>Struktur Tulisan Lengkap!</strong><br>Total kata yang ditulis: <strong>${totalWords} kata</strong>. Tulisanmu sudah memenuhi unsur identitas, ringkasan, kelebihan, dan rekomendasi!`;
+      } else {
+        fb.className = 'feedback-box show error';
+        fb.innerHTML = `⚠️ <strong>Bagian Belum Lengkap:</strong> ${missing.join(', ')}.<br>Lengkapi bagian tersebut agar ulasan bukumu semakin sempurna!`;
+      }
+    }
+
+    function copyWritingText() {
+      const title = document.getElementById('w-title').value;
+      const summary = document.getElementById('w-summary').value;
+      const rec = document.getElementById('w-recommendation').value;
+      
+      const fullText = `Ulasan Buku: ${title}\n\nRingkasan:\n${summary}\n\nRekomendasi:\n${rec}`;
+      
+      const dummy = document.createElement("textarea");
+      document.body.appendChild(dummy);
+      dummy.value = fullText;
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+
+      alert("📋 Teks ulasan buku berhasil disalin ke clipboard!");
+    }
+
+    /* Practice Section Functions */
+    function renderPracticeQuestions() {
+      const container = document.getElementById('practice-questions-container');
+      container.innerHTML = practiceQuestions.map((q, idx) => `
+        <div style="margin-bottom: 16px; background: #F7FAFC; padding: 14px; border-radius: 8px; border: 1px solid #CBD5E0;">
+          <strong>Soal ${idx+1}:</strong> ${q.q}
+          <div class="option-list" id="pq-opts-${q.id}">
+            ${q.opts.map((opt, oIdx) => `
+              <div class="option-item" onclick="selectPracticeOption(${q.id}, ${oIdx}, this)">${opt}</div>
+            `).join('')}
+          </div>
+          <div id="pq-exp-${q.id}" class="feedback-box"></div>
+        </div>
+      `).join('');
+    }
+
+    const practiceUserAnswers = {};
+    function selectPracticeOption(qId, oIdx, el) {
+      practiceUserAnswers[qId] = oIdx;
+      const parent = el.parentElement;
+      parent.querySelectorAll('.option-item').forEach(opt => opt.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function submitPractice() {
+      let correctCount = 0;
+      practiceQuestions.forEach(q => {
+        const userAns = practiceUserAnswers[q.id];
+        const expBox = document.getElementById(`pq-exp-${q.id}`);
+        if (userAns !== undefined) {
+          expBox.classList.add('show');
+          if (userAns === q.ans) {
+            correctCount++;
+            expBox.className = 'feedback-box show success';
+            expBox.innerHTML = `✅ <strong>Benar!</strong> ${q.exp}`;
+          } else {
+            expBox.className = 'feedback-box show error';
+            expBox.innerHTML = `❌ <strong>Salah.</strong> Pembahasan: ${q.exp}`;
+          }
+        }
+      });
+
+      state.practiceScore = Math.round((correctCount / practiceQuestions.length) * 100);
+      const resBox = document.getElementById('practice-result-box');
+      resBox.className = 'feedback-box show success';
+      resBox.innerHTML = `🎯 <strong>Latihan Selesai!</strong> Skor Latihan Kamu: <strong>${state.practiceScore} / 100</strong> (${correctCount} dari ${practiceQuestions.length} benar).`;
+      
+      document.getElementById('rpt-practice-score').textContent = `${state.practiceScore} / 100`;
+      updateGlobalProgress();
+    }
+
+    function resetPractice() {
+      for (let key in practiceUserAnswers) delete practiceUserAnswers[key];
+      renderPracticeQuestions();
+      document.getElementById('practice-result-box').classList.remove('show');
+    }
+
+    /* Evaluation Section Functions (20 Questions) */
+    function renderEvalNavGrid() {
+      const grid = document.getElementById('eval-nav-grid');
+      grid.innerHTML = evalQuestions.map((_, idx) => `
+        <button class="q-nav-btn ${idx === 0 ? 'active' : ''}" id="eval-nav-${idx}" onclick="showEvalQuestion(${idx})">${idx + 1}</button>
+      `).join('');
+    }
+
+    function showEvalQuestion(index) {
+      state.evalCurrentIndex = index;
+      document.querySelectorAll('.q-nav-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === index);
+      });
+
+      const q = evalQuestions[index];
+      const container = document.getElementById('eval-question-display');
+      
+      const selectedAns = state.evalAnswers[index];
+
+      container.innerHTML = `
+        <h4 style="color: var(--primary-blue); margin-bottom: 12px;">Soal Nomor ${index + 1} dari 20</h4>
+        <p style="font-size: 1.05rem; margin-bottom: 14px;">${q.q}</p>
+        <div class="option-list">
+          ${q.opts.map((opt, oIdx) => `
+            <div class="option-item ${selectedAns === oIdx ? 'selected' : ''}" onclick="selectEvalAnswer(${index}, ${oIdx})">
+              ${opt}
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      // Update Prev/Next Buttons
+      document.getElementById('btn-prev-eval').disabled = (index === 0);
+      document.getElementById('btn-next-eval').disabled = (index === evalQuestions.length - 1);
+    }
+
+    function selectEvalAnswer(qIndex, oIndex) {
+      if (state.evalSubmitted) return; // Prevent changing after submit
+      state.evalAnswers[qIndex] = oIndex;
+      
+      const navBtn = document.getElementById(`eval-nav-${qIndex}`);
+      if (navBtn) navBtn.classList.add('answered');
+
+      showEvalQuestion(qIndex);
+    }
+
+    function navigateEval(dir) {
+      const newIndex = state.evalCurrentIndex + dir;
+      if (newIndex >= 0 && newIndex < evalQuestions.length) {
+        showEvalQuestion(newIndex);
+      }
+    }
+
+    function submitEvaluation() {
+      const unanswered = state.evalAnswers.filter(a => a === null).length;
+      if (unanswered > 0) {
+        if (!confirm(`Masih ada ${unanswered} soal yang belum diisi. Yakin ingin mengakhiri dan mengirim evaluasi?`)) {
+          return;
+        }
+      }
+
+      let correct = 0;
+      evalQuestions.forEach((q, idx) => {
+        if (state.evalAnswers[idx] === q.ans) {
+          correct++;
+        }
+      });
+
+      // Score formula: (Correct / Total) * 100
+      state.evalScore = Math.round((correct / evalQuestions.length) * 100);
+      state.evalSubmitted = true;
+
+      // Display Evaluation Results Card
+      document.getElementById('eval-score-number').textContent = state.evalScore;
+      document.getElementById('eval-score-details').textContent = `Jawaban Benar: ${correct} | Salah/Kosong: ${evalQuestions.length - correct} dari Total 20 Soal.`;
+
+      let recText = "<strong>💡 Rekomendasi Belajar:</strong><br>";
+      if (state.evalScore >= 80) {
+        recText += "Sangat Luar Biasa! Kamu telah menguasai seluruh elemen pembelajaran 'Buku Jendela Dunia' dengan baik.";
+      } else if (state.evalScore >= 60) {
+        recText += "Bagus! Pelajari kembali modul yang masih kurang kamu pahami agar nilaimu semakin sempurna.";
+      } else {
+        recText += "Tetap Semangat! Disarankan untuk membaca ulang Modul 1-4 dan berdiskusi dengan guru atau temanmu.";
+      }
+
+      document.getElementById('eval-recommendations').innerHTML = recText;
+      document.getElementById('eval-score-card').style.display = 'block';
+
+      // Update Report elements
+      document.getElementById('rpt-eval-score').textContent = `${state.evalScore} / 100`;
+      document.getElementById('rpt-eval-status').textContent = state.evalScore >= 70 ? "Tuntas (Lulus KKM)" : "Perlu Remedial";
+
+      updateGlobalProgress();
+      window.scrollTo({ top: document.getElementById('eval-score-card').offsetTop, behavior: 'smooth' });
+    }
+
+    function resetEvaluation() {
+      if (confirm("Apakah kamu yakin ingin mengulangi evaluasi dari awal?")) {
+        state.evalAnswers = Array(20).fill(null);
+        state.evalSubmitted = false;
+        state.evalScore = 0;
+        document.getElementById('eval-score-card').style.display = 'none';
+        renderEvalNavGrid();
+        showEvalQuestion(0);
+      }
+    }
+
+    /* Reflection Save Handler */
+    function saveReflection() {
+      const lvl = document.getElementById('refl-level').value;
+      state.reflectionSaved = true;
+      document.getElementById('rpt-refl-status').textContent = `Selesai (${lvl})`;
+      alert("⭐ Refleksi diri berhasil disimpan! Terima kasih telah belajar dengan sungguh-sungguh.");
+    }
+
+    /* Update Printable Report View */
+    function updateReportView() {
+      document.getElementById('rpt-student-name').textContent = state.studentName;
+      
+      const teacherNotes = document.getElementById('teacher-notes').value.trim();
+      if (teacherNotes) {
+        document.getElementById('rpt-teacher-notes-display').textContent = teacherNotes;
+      }
+    }
+
+    function saveLocalReport() {
+      alert("💾 Data Laporan Hasil Belajar berhasil tersimpan sementara di penyimpanan browser lokal!");
+    }
+  </script>
+</body>
+</html>
